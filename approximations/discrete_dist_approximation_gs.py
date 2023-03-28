@@ -1,3 +1,7 @@
+import sys
+import os 
+sys.path.insert(0, os.path.abspath('./'))
+
 from matplotlib import pyplot as plt
 from Utils.MinimizeEmpiricalLoss import MinimizeEmpiricalLoss, get_initial_params_for_model_type
 from Utils.general import plot_histograms_of_gs, get_for_approx, sample_from_approx, offload_case

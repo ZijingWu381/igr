@@ -1,3 +1,7 @@
+import sys
+import os 
+sys.path.insert(0, os.path.abspath('./'))
+
 import numpy as np
 from matplotlib import pyplot as plt
 from Utils.MinimizeEmpiricalLoss import MinimizeEmpiricalLoss, get_initial_params_for_model_type

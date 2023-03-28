@@ -2,7 +2,8 @@ numba
 pandas
 scipy
 seaborn
-sklearn
-tensorflow
+scikit-learn
+# tensorflow
 tensorflow_datasets
-tensorflow_probability==0.8.0
+# tensorflow_probability==0.8.0 # not compatible with tensorflow==2.8.0
+tensorflow_probability
