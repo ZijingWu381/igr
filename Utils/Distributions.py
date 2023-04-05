@@ -238,14 +238,23 @@ def project_to_vertices(z, categories_n):
 
 
 def project_to_vertices_via_softmax_pp(lam):
+    '''
+    Implementation of the softmax++ algorithm 
+
+    Parameters
+    ----------
+        lam : tf.Tensor original lam divided by temperature
+    '''
     delta = tf.constant(1., dtype=lam.dtype)
     one = tf.constant(1.0, dtype=lam.dtype)
 
     lam_max = tf.math.reduce_max(lam, axis=1, keepdims=True)
     exp_lam = tf.math.exp(lam - lam_max)
     sum_exp_lam = tf.math.reduce_sum(exp_lam, axis=1, keepdims=True)
+    # * tf.math.exp(-lam_max)) is to avoid overflow?
     psi = exp_lam / (sum_exp_lam + delta * tf.math.exp(-lam_max))
 
+    # add the extra category dimension
     extra_cat = (one - tf.math.reduce_sum(psi, axis=1, keepdims=True))
     psi = tf.concat(values=[psi, extra_cat], axis=1)
 
